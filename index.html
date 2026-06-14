@@ -1,11 +1,1216 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Lyze Coffee</title>
-  </head>
-  <body>
-    <h1>Welcome to Lyze Coffee</h1>
-    <p>Coming soon...</p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lyze coffee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --lyze-blue: rgb(0, 191, 211);
+      --lyze-blue-dark: rgb(0, 158, 175);
+      --lyze-blue-light: rgb(224, 249, 252);
+      --concrete: #c8c4bc;
+      --warm-dark: #2a2825;
+      --warm-mid: #5c5750;
+      --cream: #f8f5f0;
+      --brick: #b5603a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(248, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(41,191,212,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--lyze-blue);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--lyze-blue); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 5rem;
+      background: var(--warm-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(41,191,212,0.08);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lyze-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title span {
+      color: var(--lyze-blue);
+      display: block;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.55);
+      max-width: 380px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--lyze-blue);
+      color: #fff;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+      border-radius: 2px;
+      width: fit-content;
+    }
+
+    .hero-cta:hover {
+      background: var(--lyze-blue-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-right {
+      background: var(--lyze-blue);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-store-facade {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      mix-blend-mode: multiply;
+    }
+
+    .hero-right-overlay {
+      position: absolute;
+      bottom: 3rem;
+      right: 3rem;
+      text-align: right;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2px;
+    }
+
+    /* INTRO STRIP */
+    .intro-strip {
+      background: var(--lyze-blue);
+      padding: 1.25rem 5rem;
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .intro-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .intro-strip-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+
+    .about-images {
+      position: relative;
+      background: #e8e4de;
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .about-img-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-img-inset {
+      position: absolute;
+      bottom: 2rem;
+      right: -1.5rem;
+      width: 220px;
+      height: 280px;
+      object-fit: cover;
+      border: 6px solid var(--cream);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    }
+
+    .about-content {
+      padding: 6rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--cream);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--lyze-blue);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--lyze-blue);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--warm-dark);
+    }
+
+    .section-title em {
+      color: var(--lyze-blue);
+      font-style: italic;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--warm-mid);
+      max-width: 440px;
+    }
+
+    /* MENU */
+    .menu {
+      padding: 7rem 5rem;
+      background: var(--warm-dark);
+    }
+
+    .menu-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+    }
+
+    .menu-header .section-title { color: #fff; }
+    .menu-header .section-label { color: var(--lyze-blue); }
+
+    .menu-tabs {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .menu-tab {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+      background: transparent;
+      border-radius: 2px;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .menu-tab.active, .menu-tab:hover {
+      background: var(--lyze-blue);
+      border-color: var(--lyze-blue);
+      color: #fff;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .menu-item {
+      background: rgba(255,255,255,0.03);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+
+    .menu-item:hover { background: rgba(41,191,212,0.08); }
+
+    .menu-item-number {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--lyze-blue);
+      margin-bottom: 0.75rem;
+      opacity: 0.7;
+    }
+
+    .menu-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-item-desc {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* DRINKS SHOWCASE */
+    .drinks {
+      padding: 7rem 5rem;
+      background: var(--cream);
+    }
+
+    .drinks-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .drink-card {
+      text-align: center;
+    }
+
+    .drink-img-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      background: #e0dcd6;
+      position: relative;
+    }
+
+    .drink-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .drink-card:hover .drink-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .drink-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .drink-note {
+      font-size: 0.8rem;
+      color: var(--warm-mid);
+      letter-spacing: 0.05em;
+    }
+
+    /* INTERIOR */
+    .interior {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      height: 600px;
+      background: var(--warm-dark);
+    }
+
+    .interior-img {
+      overflow: hidden;
+    }
+
+    .interior-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .interior-img:hover img { transform: scale(1.03); }
+
+    .interior-img.tall { grid-row: 1 / 3; }
+
+    .interior-text {
+      grid-column: 2 / 4;
+      background: var(--lyze-blue);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem;
+    }
+
+    .interior-text p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .interior-text small {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* BAKERY */
+    .bakery {
+      padding: 7rem 5rem;
+      background: #f0ece6;
+    }
+
+    .bakery-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .bakery-content .section-body { margin-bottom: 2rem; }
+
+    .bakery-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .bakery-tag {
+      background: #fff;
+      border: 1px solid rgba(41,191,212,0.2);
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      color: var(--warm-mid);
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    .bakery-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    /* ACADEMY */
+    .academy {
+      padding: 7rem 5rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .academy::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(0,191,211,0.05);
+      pointer-events: none;
+    }
+
+    .academy-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .academy-coming-soon {
+      display: inline-block;
+      background: var(--lyze-blue);
+      color: #fff;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .academy-credentials {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .academy-credential {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: #fff;
+      border: 1px solid rgba(0,191,211,0.15);
+      border-radius: 2px;
+    }
+
+    .academy-credential-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--lyze-blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .academy-credential-text {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--warm-mid);
+    }
+
+    .academy-credential-text strong {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--warm-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .academy-courses {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(0,191,211,0.1);
+      border: 1px solid rgba(0,191,211,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .academy-course {
+      background: #fff;
+      padding: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .academy-course:hover { background: var(--lyze-blue-light); }
+
+    .academy-course-icon {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .academy-course-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--warm-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .academy-course-sub {
+      font-size: 0.75rem;
+      color: var(--warm-mid);
+      line-height: 1.5;
+    }
+
+    .academy-heritage {
+      margin-top: 2rem;
+      padding: 1.25rem;
+      border-left: 3px solid var(--lyze-blue);
+      background: rgba(0,191,211,0.04);
+    }
+
+    .academy-heritage p {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: var(--warm-mid);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .academy { padding: 4rem 2rem; }
+      .academy-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .academy-courses { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* VISIT */
+    .visit {
+      background: var(--warm-dark);
+      padding: 7rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .visit .section-title { color: #fff; }
+    .visit .section-body { color: rgba(255,255,255,0.5); }
+
+    .visit-details {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .visit-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .visit-detail-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lyze-blue);
+      min-width: 80px;
+      padding-top: 2px;
+    }
+
+    .visit-detail-value {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    .map-placeholder {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(41,191,212,0.2);
+      border-radius: 2px;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .map-icon {
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(41,191,212,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--lyze-blue);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .map-placeholder p {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a1917;
+      padding: 3rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(41,191,212,0.1);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--lyze-blue);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--lyze-blue); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-left > * {
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-eyebrow { animation-delay: 0.1s; }
+    .hero-title { animation-delay: 0.25s; }
+    .hero-desc { animation-delay: 0.4s; }
+    .hero-cta { animation-delay: 0.55s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 50vw; }
+      .hero-left { padding: 4rem 2rem; }
+      .about { grid-template-columns: 1fr; }
+      .about-images { min-height: 350px; }
+      .about-content { padding: 3rem 2rem; }
+      .menu { padding: 4rem 2rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .drinks { padding: 4rem 2rem; }
+      .drinks-grid { grid-template-columns: 1fr 1fr; }
+      .interior { grid-template-columns: 1fr 1fr; height: auto; }
+      .interior-img.tall { grid-row: auto; }
+      .bakery { padding: 4rem 2rem; }
+      .bakery-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .visit { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+      .intro-strip { padding: 1rem 2rem; gap: 2rem; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">lyze coffee</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#drinks">Drinks</a></li>
+      <li><a href="#academy">Academy</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Shanghai · 上海 · 상하이</p>
+      <h1 class="hero-title">
+        Shanghai's home<br>
+        <span>for serious coffee</span>
+      </h1>
+      <p class="hero-desc">
+        A destination for those who love specialty coffee. World-class beans, brewed with precision — and a place to learn the craft from those who live it.
+        <br><br>
+        <span style="font-size:0.875rem;color:rgba(255,255,255,0.35);">为每一位热爱精品咖啡的人而生。世界顶级豆源，精准萃取，亦是学习咖啡之道的圣地。</span>
+        <br>
+        <span style="font-size:0.875rem;color:rgba(255,255,255,0.35);">스페셜티 커피를 사랑하는 모든 이를 위한 공간. 세계 최고의 원두, 정밀한 브루잉 — 그리고 커피를 깊이 배울 수 있는 곳.</span>
+      </p>
+      <a href="#menu" class="hero-cta">
+        Explore our menu
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-right">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(41,191,212,0.6) 0%, rgba(26,154,173,0.4) 100%);"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:6rem;color:rgba(255,255,255,0.15);line-height:1;">lyze</div>
+          <div style="font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:1rem;">coffee</div>
+        </div>
+      </div>
+      <div class="hero-right-overlay">
+        <span class="hero-tag">Est. Shanghai</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="intro-strip">
+    <div class="intro-strip-item">☕ Specialty Coffee · 精品咖啡 · 스페셜티 커피</div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item">✦ House-made Pastries · 现烤糕点 · 홈메이드 페이스트리</div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item">◈ Coffee Academy · Opening Soon · 即将开业 · 곧 오픈</div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item">✦ Open Daily · 每天开放 · 매일 운영</div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item">☕ Specialty Coffee · 精品咖啡 · 스페셜티 커피</div>
+    <div class="intro-strip-dot"></div>
+    <div class="intro-strip-item">✦ House-made Pastries · 现烤糕点 · 홈메이드 페이스트리</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-images">
+      <div style="width:100%;height:100%;background:linear-gradient(160deg,#c8e8ed 0%,#8ecfd8 50%,#5aafbc 100%);display:flex;align-items:center;justify-content:center;min-height:500px;">
+        <div style="text-align:center;padding:3rem;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:5rem;color:rgba(255,255,255,0.3);">lyze</div>
+          <div style="width:60px;height:2px;background:rgba(255,255,255,0.4);margin:1.5rem auto;"></div>
+          <p style="font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Shanghai · China</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <p class="section-label">Our story · 我们的故事 · 우리의 이야기</p>
+      <h2 class="section-title">
+        Industrial soul,<br>
+        <em>blue heart</em>
+      </h2>
+      <p class="section-body">
+        Lyze Coffee was born from a single vision: to make Shanghai a true destination for specialty coffee — a place where anyone who loves great coffee comes to taste, to discover, and to go deeper.
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+        Lyze Coffee 诞生于一个信念：让上海成为精品咖啡的圣地——一个让每一位热爱咖啡的人，都愿意专程前来品味、探索与深耕的地方。
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+        Lyze Coffee는 하나의 비전에서 태어났습니다. 상하이를 스페셜티 커피의 성지로 만드는 것 — 커피를 사랑하는 모든 이가 맛을 음미하고, 발견하고, 더 깊이 빠져들기 위해 찾아오는 공간.
+      </p>
+      <p class="section-body" style="margin-top:1.25rem;">
+        We source some of the world's finest beans — including the Crown of Ethiopia ALO and Gesha Village — and brew each one with the precision of competition. Coffee doesn't have to stand alone either: we pair it with seasonal ingredients to create flavor experiences that surprise and delight.
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+        我们甄选全球顶级豆源，包括埃塞冠韵 ALO 与瑰夏村，以竞技级标准萃取每一杯。我们也相信，咖啡与食材的碰撞能带来更多惊喜的风味体验。
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+        세계 최고 수준의 원두 — Crown of Ethiopia ALO, Gesha Village 등 — 를 엄선하여 컴피티션 수준의 정밀함으로 브루잉합니다. 시즈널 식재료와의 조합으로 새로운 풍미의 경험도 선사합니다.
+      </p>
+      <p class="section-body" style="margin-top:1.25rem;">
+        Our academy, rooted in the heritage of 露元咖啡培训学院 (First Drop), brings that same commitment to education — led by a licensed Q Instructor and Chinese Coffee League brewing judge. Opening soon.
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+        我们的咖啡学院传承自露元咖啡培训学院，由持牌 Q Instructor 及中国咖啡联赛冲煮评审执裁主理，致力于将这份对咖啡的热情传授给每一位学员。即将开业。
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+        저희 아카데미는 露元咖啡培训学院 (First Drop)의 헤리티지를 이어받아, 공인 Q Instructor이자 중국커피리그 브루잉 심판이 직접 이끕니다. 곧 오픈 예정.
+      </p>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="menu-header">
+      <div>
+        <p class="section-label">What we serve</p>
+        <h2 class="section-title">Our menu</h2>
+      </div>
+      <div class="menu-tabs">
+        <button class="menu-tab active">Coffee</button>
+        <button class="menu-tab">Non-coffee</button>
+        <button class="menu-tab">Pastries</button>
+      </div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <p class="menu-item-number">01</p>
+        <h3 class="menu-item-name">Flat White</h3>
+        <p class="menu-item-desc">Ristretto shots with velvety microfoam, served in a ceramic tumbler</p>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">02</p>
+        <h3 class="menu-item-name">Iced Latte</h3>
+        <p class="menu-item-desc">Cold, clean espresso over ice with fresh whole milk</p>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">03</p>
+        <h3 class="menu-item-name">Pour Over</h3>
+        <p class="menu-item-desc">Single origin, hand-poured — bright, floral, and complex</p>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">04</p>
+        <h3 class="menu-item-name">Cortado</h3>
+        <p class="menu-item-desc">Equal parts espresso and steamed milk, layered to perfection</p>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">05</p>
+        <h3 class="menu-item-name">Cold Brew</h3>
+        <p class="menu-item-desc">12-hour steep, served over a single large ice cube with fresh herbs</p>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">06</p>
+        <h3 class="menu-item-name">Espresso Tonic</h3>
+        <p class="menu-item-desc">Double shot over tonic water with a twist of citrus zest</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRINKS SHOWCASE -->
+  <section class="drinks" id="drinks">
+    <div class="drinks-header">
+      <p class="section-label" style="justify-content:center;text-align:center;">From the bar</p>
+      <h2 class="section-title">Crafted with care</h2>
+    </div>
+    <div class="drinks-grid">
+      <div class="drink-card">
+        <div class="drink-img-wrap" style="background:linear-gradient(160deg,#c9a882,#8b6a45);display:flex;align-items:center;justify-content:center;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,0.5);">latte</div>
+        </div>
+        <p class="drink-name">Ceramic Latte</p>
+        <p class="drink-note">Hot · Milk forward</p>
+      </div>
+      <div class="drink-card">
+        <div class="drink-img-wrap" style="background:linear-gradient(160deg,#e07060,#c43a20);display:flex;align-items:center;justify-content:center;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,0.5);">fruit</div>
+        </div>
+        <p class="drink-name">Fruit Cooler</p>
+        <p class="drink-note">Iced · Refreshing</p>
+      </div>
+      <div class="drink-card">
+        <div class="drink-img-wrap" style="background:linear-gradient(160deg,#c4883a,#8b5e15);display:flex;align-items:center;justify-content:center;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,0.5);">cold brew</div>
+        </div>
+        <p class="drink-name">Cold Brew Block</p>
+        <p class="drink-note">Iced · Clean & bright</p>
+      </div>
+      <div class="drink-card">
+        <div class="drink-img-wrap" style="background:linear-gradient(160deg,#e8c87a,#c49020);display:flex;align-items:center;justify-content:center;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,0.5);">cortado</div>
+        </div>
+        <p class="drink-name">Layered Cortado</p>
+        <p class="drink-note">Hot · Bold layers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERIOR -->
+  <div class="interior">
+    <div class="interior-img tall">
+      <div style="width:100%;height:100%;background:linear-gradient(160deg,#4a4640,#2a2520);display:flex;align-items:center;justify-content:center;min-height:300px;">
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:2rem;color:rgba(255,255,255,0.15);">interior</p>
+      </div>
+    </div>
+    <div class="interior-text">
+      <p>"A place that feels like your most creative friend's living room"</p>
+      <small>The lyze space · Shanghai</small>
+    </div>
+    <div class="interior-img">
+      <div style="width:100%;height:100%;background:linear-gradient(160deg,#29bfd4,#1a7a8a);"></div>
+    </div>
+    <div class="interior-img">
+      <div style="width:100%;height:100%;background:linear-gradient(160deg,#b5603a,#7a3d22);"></div>
+    </div>
+  </div>
+
+  <!-- BAKERY -->
+  <section class="bakery">
+    <div class="bakery-inner">
+      <div class="bakery-content">
+        <p class="section-label">House-baked</p>
+        <h2 class="section-title">
+          Cookies &<br>
+          <em>Scones</em>
+        </h2>
+        <p class="section-body">
+          Every pastry is made fresh in-house. Our cookies are thick, chewy, and unapologetically indulgent. Our scones are buttery and layered. Perfect with any coffee.
+        </p>
+        <div class="bakery-items">
+          <div class="bakery-tag">Pecan Macadamia</div>
+          <div class="bakery-tag">Red Velvet</div>
+          <div class="bakery-tag">Caramel</div>
+          <div class="bakery-tag">Dark Chocolate</div>
+          <div class="bakery-tag">Apple Cinnamon</div>
+          <div class="bakery-tag">Pistachio</div>
+          <div class="bakery-tag">Raisin Scone</div>
+          <div class="bakery-tag">Butter Scone</div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(160deg,#c8a878,#8a6a40);border-radius:2px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;">
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:2rem;color:rgba(255,255,255,0.2);">pastries</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADEMY -->
+  <section class="academy" id="academy">
+    <div class="academy-inner">
+      <div>
+        <span class="academy-coming-soon">Opening Soon · 即将开业 · 곧 오픈</span>
+        <p class="section-label">Coffee Academy · 咖啡学院 · 커피 아카데미</p>
+        <h2 class="section-title">
+          Learn from<br>
+          <em>the best</em>
+        </h2>
+        <p class="section-body">
+          Our academy is a place where passion for specialty coffee becomes mastery. Whether you're a curious beginner or an aspiring competition barista — this is where the journey deepens.
+        </p>
+        <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+          咖啡学院是热爱转化为专业的地方。无论你是初学者还是志在竞技的咖啡师，这里都是深耕咖啡之道的起点。
+        </p>
+        <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
+          아카데미는 커피에 대한 열정이 전문성으로 바뀌는 곳입니다. 입문자부터 컴피티션을 꿈꾸는 바리스타까지, 여기서 커피의 깊이를 발견하세요.
+        </p>
+        <div class="academy-credentials">
+          <div class="academy-credential">
+            <div class="academy-credential-icon">🏅</div>
+            <div class="academy-credential-text">
+              <strong>SCA Licensed Q Instructor</strong>
+              Certified to train and certify Q Graders — one of the most advanced coffee credentials in the world, and rare in China.<br>
+              <span style="font-size:0.75rem;">持牌 Q Instructor，具备培训并认证 Q Grader 的资质，此资质在中国极为稀缺。</span><br>
+              <span style="font-size:0.75rem;">공인 Q Instructor — Q Grader를 교육하고 인증할 수 있는 자격 보유. 중국에서 극히 드문 자격증입니다.</span>
+            </div>
+          </div>
+          <div class="academy-credential">
+            <div class="academy-credential-icon">⚖️</div>
+            <div class="academy-credential-text">
+              <strong>中国咖啡联赛冲煮评审执裁</strong>
+              Licensed competition judge for brewing events under the Chinese Coffee League (CCL).<br>
+              <span style="font-size:0.75rem;">中国咖啡联赛冲煮赛项官方认证评审执裁。</span><br>
+              <span style="font-size:0.75rem;">중국커피리그(CCL) 브루잉 부문 공인 심판 자격 보유.</span>
+            </div>
+          </div>
+        </div>
+        <div class="academy-heritage">
+          <p>Rooted in the legacy of 露元咖啡培训学院 (First Drop Coffee Academy), with years of training experience and a deep connection to China's specialty coffee competition scene.</p>
+          <p style="margin-top:0.4rem;font-size:0.75rem;">传承自露元咖啡培训学院，深耕中国精品咖啡培训与竞技多年。 · 露元咖啡培训학원의 헤리티지를 이어받아, 중국 스페셜티 커피 씬과 깊이 연결되어 있습니다.</p>
+        </div>
+      </div>
+      <div>
+        <p class="section-label" style="margin-bottom:1.25rem;">Courses offered · 课程设置 · 개설 코스</p>
+        <div class="academy-courses">
+          <div class="academy-course">
+            <div class="academy-course-icon">☕</div>
+            <p class="academy-course-name">SCA Barista Skills</p>
+            <p class="academy-course-sub">Foundation to Professional<br>基础至专业级 · 기초~프로</p>
+          </div>
+          <div class="academy-course">
+            <div class="academy-course-icon">🌊</div>
+            <p class="academy-course-name">SCA Brewing</p>
+            <p class="academy-course-sub">Filter &amp; Pour Over Mastery<br>手冲萃取 · 브루잉 마스터리</p>
+          </div>
+          <div class="academy-course">
+            <div class="academy-course-icon">👁</div>
+            <p class="academy-course-name">SCA Sensory Skills</p>
+            <p class="academy-course-sub">Tasting &amp; Cupping<br>感官品鉴 · 센서리 스킬</p>
+          </div>
+          <div class="academy-course">
+            <div class="academy-course-icon">🔥</div>
+            <p class="academy-course-name">SCA Roasting</p>
+            <p class="academy-course-sub">Green to Cup<br>烘焙技艺 · 로스팅</p>
+          </div>
+          <div class="academy-course">
+            <div class="academy-course-icon">🌱</div>
+            <p class="academy-course-name">Q Grader Pathway</p>
+            <p class="academy-course-sub">CQI Certification Track<br>Q Grader 认证 · Q Grader 인증</p>
+          </div>
+          <div class="academy-course">
+            <div class="academy-course-icon">🎨</div>
+            <p class="academy-course-name">Latte Art</p>
+            <p class="academy-course-sub">From basics to competition<br>拉花技艺 · 라떼 아트</p>
+          </div>
+        </div>
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--warm-dark);border-radius:2px;text-align:center;">
+          <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Enquiries · 咨询 · 문의</p>
+          <a href="https://m.dianping.com/shopinfo/H5Aysy2lOH38DcaR?msource=Appshare2021&utm_source=shop_share&shoptype=10&shopcategoryid=132&cityid=1&isoversea=0" target="_blank" style="color:var(--lyze-blue);text-decoration:none;font-size:0.9rem;">Find us on Dianping · 大众点评 ↗</a>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:0.5rem;">大众点评로 문의해 주세요</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div>
+      <p class="section-label">Find us · 找到我们 · 찾아오세요</p>
+      <h2 class="section-title">Come visit · <em>欢迎光临</em></h2>
+      <p class="section-body">
+        We're tucked into a quiet street in Shanghai, behind our unmistakable turquoise facade. The bench outside is always free.
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:rgba(255,255,255,0.35);">
+        我们坐落在上海的一条安静街道上，标志性的蓝绿色外墙一眼便能认出。门外的长椅随时欢迎您。
+      </p>
+      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:rgba(255,255,255,0.35);">
+        상하이의 조용한 골목, 눈에 띄는 터콰이즈 파사드 뒤에 자리합니다. 문 앞 벤치는 언제나 열려 있어요.
+      </p>
+      <div class="visit-details">
+        <div class="visit-detail">
+          <span class="visit-detail-label">Address</span>
+          <span class="visit-detail-value">
+            555-1 Beijing West Road<br>
+            Jing'an District, Shanghai 200041<br>
+            <span style="font-size:0.85rem;color:rgba(255,255,255,0.4);">上海市静安区北京西路555-1号</span>
+          </span>
+        </div>
+        <div class="visit-detail">
+          <span class="visit-detail-label">Hours · 营业时间</span>
+          <span class="visit-detail-value">Every day · 10:00 – 17:00<br><span style="font-size:0.85rem;color:rgba(255,255,255,0.4);">每天开放 · 매일 운영</span></span>
+        </div>
+        <div class="visit-detail">
+          <span class="visit-detail-label">Academy · 学院 · 아카데미</span>
+          <span class="visit-detail-value">
+            Lyze Coffee Academy<br>
+            <span style="font-size:0.85rem;color:rgba(255,255,255,0.4);">Opening in approx. 2 months · 约两个月后开业 · 약 2개월 후 오픈</span>
+          </span>
+        </div>
+        <div class="visit-detail">
+          <span class="visit-detail-label">Reviews · 点评</span>
+          <span class="visit-detail-value"><a href="https://m.dianping.com/shopinfo/H5Aysy2lOH38DcaR?msource=Appshare2021&utm_source=shop_share&shoptype=10&shopcategoryid=132&cityid=1&isoversea=0" target="_blank" style="color:var(--lyze-blue);text-decoration:none;">Find us on Dianping · 大众点评 ↗</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <div class="map-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </div>
+      <p>555-1 Beijing West Road</p>
+      <p style="font-size:0.75rem;opacity:0.6;">上海市静安区北京西路555-1号</p>
+      <a href="https://maps.google.com/?q=555-1+Beijing+West+Road+Jingan+Shanghai" target="_blank" style="font-size:0.75rem;color:var(--lyze-blue);text-decoration:none;margin-top:0.5rem;">Open in Google Maps ↗</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">lyze coffee</div>
+    <p class="footer-copy">© 2026 Lyze Coffee · Shanghai</p>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#academy">Academy</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll('.menu-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
 </html>
