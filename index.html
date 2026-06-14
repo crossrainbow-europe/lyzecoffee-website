@@ -8,19 +8,7 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      max-width: 100%;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--warm-dark);
-      overflow-x: hidden;
-      max-width: 100%;
-    }
+    :root {
       --lyze-blue: rgb(0, 191, 211);
       --lyze-blue-dark: rgb(0, 158, 175);
       --lyze-blue-light: rgb(224, 249, 252);
@@ -31,6 +19,15 @@
       --brick: #b5603a;
     }
 
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      overflow-x: hidden;
+    }
+
     /* NAV */
     nav {
       position: fixed;
@@ -39,13 +36,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.2rem 2rem;
+      padding: 1.2rem 3rem;
       background: rgba(248, 245, 240, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(41,191,212,0.15);
       transition: all 0.3s ease;
-      box-sizing: border-box;
-      max-width: 100vw;
     }
 
     .nav-logo {
@@ -74,67 +69,6 @@
     }
 
     .nav-links a:hover { color: var(--lyze-blue); }
-
-    /* HAMBURGER */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-      z-index: 200;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--warm-dark);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* MOBILE MENU OVERLAY */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(248, 245, 240, 0.98);
-      backdrop-filter: blur(12px);
-      z-index: 150;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-    }
-
-    .mobile-menu.open {
-      display: flex;
-    }
-
-    .mobile-menu a {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 2rem;
-      color: var(--warm-dark);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-
-    .mobile-menu a:hover { color: var(--lyze-blue); }
 
     /* HERO */
     .hero {
@@ -578,143 +512,6 @@
       border-radius: 2px;
     }
 
-    /* ACADEMY */
-    .academy {
-      padding: 7rem 5rem;
-      background: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .academy::before {
-      content: '';
-      position: absolute;
-      top: -120px; right: -120px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: rgba(0,191,211,0.05);
-      pointer-events: none;
-    }
-
-    .academy-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .academy-coming-soon {
-      display: inline-block;
-      background: var(--lyze-blue);
-      color: #fff;
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border-radius: 2px;
-      margin-bottom: 1.5rem;
-    }
-
-    .academy-credentials {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .academy-credential {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1.25rem;
-      background: #fff;
-      border: 1px solid rgba(0,191,211,0.15);
-      border-radius: 2px;
-    }
-
-    .academy-credential-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--lyze-blue-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1rem;
-    }
-
-    .academy-credential-text {
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: var(--warm-mid);
-    }
-
-    .academy-credential-text strong {
-      display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-      color: var(--warm-dark);
-      margin-bottom: 0.2rem;
-    }
-
-    .academy-courses {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: rgba(0,191,211,0.1);
-      border: 1px solid rgba(0,191,211,0.1);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-top: 0.5rem;
-    }
-
-    .academy-course {
-      background: #fff;
-      padding: 1.5rem;
-      transition: background 0.2s;
-    }
-
-    .academy-course:hover { background: var(--lyze-blue-light); }
-
-    .academy-course-icon {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .academy-course-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: var(--warm-dark);
-      margin-bottom: 0.25rem;
-    }
-
-    .academy-course-sub {
-      font-size: 0.75rem;
-      color: var(--warm-mid);
-      line-height: 1.5;
-    }
-
-    .academy-heritage {
-      margin-top: 2rem;
-      padding: 1.25rem;
-      border-left: 3px solid var(--lyze-blue);
-      background: rgba(0,191,211,0.04);
-    }
-
-    .academy-heritage p {
-      font-size: 0.8rem;
-      line-height: 1.7;
-      color: var(--warm-mid);
-      font-style: italic;
-    }
-
-    @media (max-width: 900px) {
-      .academy { padding: 4rem 2rem; }
-      .academy-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .academy-courses { grid-template-columns: 1fr 1fr; }
-    }
-
     /* VISIT */
     .visit {
       background: var(--warm-dark);
@@ -854,10 +651,8 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      nav { padding: 0.9rem 1rem; }
-      .nav-logo { font-size: 1.3rem; }
+      nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .hamburger { display: flex; }
       .hero { grid-template-columns: 1fr; }
       .hero-right { min-height: 50vw; }
       .hero-left { padding: 4rem 2rem; }
@@ -876,6 +671,79 @@
       footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
       .intro-strip { padding: 1rem 2rem; gap: 2rem; overflow-x: auto; }
     }
+
+    /* HAMBURGER - mobile only */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--warm-dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(248,245,240,0.98);
+      backdrop-filter: blur(12px);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2rem;
+      color: var(--warm-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--lyze-blue); }
+
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+    }
+
+    /* ACADEMY */
+    .academy { padding: 7rem 5rem; background: var(--cream); position: relative; overflow: hidden; }
+    .academy::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: rgba(0,191,211,0.05); pointer-events: none; }
+    .academy-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .academy-coming-soon { display: inline-block; background: var(--lyze-blue); color: #fff; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 2px; margin-bottom: 1.5rem; }
+    .academy-credentials { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .academy-credential { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; background: #fff; border: 1px solid rgba(0,191,211,0.15); border-radius: 2px; }
+    .academy-credential-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--lyze-blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+    .academy-credential-text { font-size: 0.875rem; line-height: 1.6; color: var(--warm-mid); }
+    .academy-credential-text strong { display: block; font-size: 0.8rem; letter-spacing: 0.05em; color: var(--warm-dark); margin-bottom: 0.2rem; }
+    .academy-courses { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(0,191,211,0.1); border: 1px solid rgba(0,191,211,0.1); border-radius: 2px; overflow: hidden; margin-top: 0.5rem; }
+    .academy-course { background: #fff; padding: 1.5rem; transition: background 0.2s; }
+    .academy-course:hover { background: var(--lyze-blue-light); }
+    .academy-course-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .academy-course-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--warm-dark); margin-bottom: 0.25rem; }
+    .academy-course-sub { font-size: 0.75rem; color: var(--warm-mid); line-height: 1.5; }
+    .academy-heritage { margin-top: 2rem; padding: 1.25rem; border-left: 3px solid var(--lyze-blue); background: rgba(0,191,211,0.04); }
+    .academy-heritage p { font-size: 0.8rem; line-height: 1.7; color: var(--warm-mid); font-style: italic; }
+    @media (max-width: 900px) {
+      .academy { padding: 4rem 2rem; }
+      .academy-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
   </style>
 </head>
 <body>
@@ -890,20 +758,16 @@
       <li><a href="#academy">Academy</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" class="mobile-nav-link">About</a>
-    <a href="#menu" class="mobile-nav-link">Menu</a>
-    <a href="#drinks" class="mobile-nav-link">Drinks</a>
-    <a href="#academy" class="mobile-nav-link">Academy</a>
-    <a href="#visit" class="mobile-nav-link">Visit</a>
+    <a href="#about" class="mnl">About</a>
+    <a href="#menu" class="mnl">Menu</a>
+    <a href="#drinks" class="mnl">Drinks</a>
+    <a href="#academy" class="mnl">Academy</a>
+    <a href="#visit" class="mnl">Visit</a>
   </div>
 
   <!-- HERO -->
@@ -915,10 +779,8 @@
         <span>for serious coffee</span>
       </h1>
       <p class="hero-desc">
-        A destination for those who love specialty coffee. World-class beans, brewed with precision — and a place to learn the craft from those who live it.
-        <br><br>
-        <span style="font-size:0.875rem;color:rgba(255,255,255,0.35);">为每一位热爱精品咖啡的人而生。世界顶级豆源，精准萃取，亦是学习咖啡之道的圣地。</span>
-        <br>
+        A destination for those who love specialty coffee. World-class beans, brewed with precision — and a place to learn the craft from those who live it.<br><br>
+        <span style="font-size:0.875rem;color:rgba(255,255,255,0.35);">为每一位热爱精品咖啡的人而生。世界顶级豆源，精准萃取，亦是学习咖啡之道的圣地。</span><br>
         <span style="font-size:0.875rem;color:rgba(255,255,255,0.35);">스페셜티 커피를 사랑하는 모든 이를 위한 공간. 세계 최고의 원두, 정밀한 브루잉 — 그리고 커피를 깊이 배울 수 있는 곳.</span>
       </p>
       <a href="#menu" class="hero-cta">
@@ -942,17 +804,17 @@
 
   <!-- STRIP -->
   <div class="intro-strip">
-    <div class="intro-strip-item">☕ Specialty Coffee · 精品咖啡 · 스페셜티 커피</div>
+    <div class="intro-strip-item">☕ Specialty Coffee</div>
     <div class="intro-strip-dot"></div>
-    <div class="intro-strip-item">✦ House-made Pastries · 现烤糕点 · 홈메이드 페이스트리</div>
+    <div class="intro-strip-item">✦ House-made Pastries</div>
     <div class="intro-strip-dot"></div>
     <div class="intro-strip-item">◈ Coffee Academy · Opening Soon · 即将开业 · 곧 오픈</div>
     <div class="intro-strip-dot"></div>
-    <div class="intro-strip-item">✦ Open Daily · 每天开放 · 매일 운영</div>
+    <div class="intro-strip-item">✦ Open Daily</div>
     <div class="intro-strip-dot"></div>
-    <div class="intro-strip-item">☕ Specialty Coffee · 精品咖啡 · 스페셜티 커피</div>
+    <div class="intro-strip-item">☕ Specialty Coffee</div>
     <div class="intro-strip-dot"></div>
-    <div class="intro-strip-item">✦ House-made Pastries · 现烤糕点 · 홈메이드 페이스트리</div>
+    <div class="intro-strip-item">✦ House-made Pastries</div>
   </div>
 
   <!-- ABOUT -->
@@ -967,37 +829,31 @@
       </div>
     </div>
     <div class="about-content">
-      <p class="section-label">Our story · 我们的故事 · 우리의 이야기</p>
+      <p class="section-label">Our story · 我们的故事</p>
       <h2 class="section-title">
         Industrial soul,<br>
         <em>blue heart</em>
       </h2>
       <p class="section-body">
-        Lyze Coffee was born from a single vision: to make Shanghai a true destination for specialty coffee — a place where anyone who loves great coffee comes to taste, to discover, and to go deeper.
+        We seek out exceptional specialty coffees from around the world and roast each one with meticulous care — so that anyone, not just the connoisseur, can taste the difference and fall in love with what coffee can be.
       </p>
       <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-        Lyze Coffee 诞生于一个信念：让上海成为精品咖啡的圣地——一个让每一位热爱咖啡的人，都愿意专程前来品味、探索与深耕的地方。
+        我们寻找世界各地优质的精品咖啡，精心烘焙每一支豆子，让每个人都能轻松感受咖啡的丰富风味。
+      </p>
+      <p class="section-body" style="margin-top:1rem;">
+        We also believe coffee doesn't have to stand alone. By pairing it with carefully chosen ingredients — fruits, spices, botanicals — we explore new flavor harmonies that surprise and delight.
       </p>
       <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-        Lyze Coffee는 하나의 비전에서 태어났습니다. 상하이를 스페셜티 커피의 성지로 만드는 것 — 커피를 사랑하는 모든 이가 맛을 음미하고, 발견하고, 더 깊이 빠져들기 위해 찾아오는 공간.
+        我们将咖啡与各种食材相结合，探索出令人惊喜的全新风味组合。
       </p>
-      <p class="section-body" style="margin-top:1.25rem;">
-        We source some of the world's finest beans — including the Crown of Ethiopia ALO and Gesha Village — and brew each one with the precision of competition. Coffee doesn't have to stand alone either: we pair it with seasonal ingredients to create flavor experiences that surprise and delight.
-      </p>
-      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-        我们甄选全球顶级豆源，包括埃塞冠韵 ALO 与瑰夏村，以竞技级标准萃取每一杯。我们也相信，咖啡与食材的碰撞能带来更多惊喜的风味体验。
+      <p class="section-body" style="margin-top:1rem;">
+        Our academy — rooted in the heritage of 露元咖啡培训学院 (First Drop) — brings the same commitment to education, led by a licensed Q Instructor and Chinese Coffee League brewing judge. Opening soon.
       </p>
       <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-        세계 최고 수준의 원두 — Crown of Ethiopia ALO, Gesha Village 등 — 를 엄선하여 컴피티션 수준의 정밀함으로 브루잉합니다. 시즈널 식재료와의 조합으로 새로운 풍미의 경험도 선사합니다.
-      </p>
-      <p class="section-body" style="margin-top:1.25rem;">
-        Our academy, rooted in the heritage of 露元咖啡培训学院 (First Drop), brings that same commitment to education — led by a licensed Q Instructor and Chinese Coffee League brewing judge. Opening soon.
+        我们的咖啡学院传承自露元咖啡培训学院，由持牌 Q Instructor 及中国咖啡联赛冲煮评审执裁主理。即将开业。
       </p>
       <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-        我们的咖啡学院传承自露元咖啡培训学院，由持牌 Q Instructor 及中国咖啡联赛冲煮评审执裁主理，致力于将这份对咖啡的热情传授给每一位学员。即将开业。
-      </p>
-      <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-        저희 아카데미는 露元咖啡培训学院 (First Drop)의 헤리티지를 이어받아, 공인 Q Instructor이자 중국커피리그 브루잉 심판이 직접 이끕니다. 곧 오픈 예정.
+        저희 아카데미는 露元咖啡培训학원의 헤리티지를 이어받아, 공인 Q Instructor이자 중국커피리그 브루잉 심판이 이끕니다. 곧 오픈 예정.
       </p>
     </div>
   </section>
@@ -1135,25 +991,17 @@
     </div>
   </section>
 
+
   <!-- ACADEMY -->
   <section class="academy" id="academy">
     <div class="academy-inner">
       <div>
         <span class="academy-coming-soon">Opening Soon · 即将开业 · 곧 오픈</span>
         <p class="section-label">Coffee Academy · 咖啡学院 · 커피 아카데미</p>
-        <h2 class="section-title">
-          Learn from<br>
-          <em>the best</em>
-        </h2>
-        <p class="section-body">
-          Our academy is a place where passion for specialty coffee becomes mastery. Whether you're a curious beginner or an aspiring competition barista — this is where the journey deepens.
-        </p>
-        <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-          咖啡学院是热爱转化为专业的地方。无论你是初学者还是志在竞技的咖啡师，这里都是深耕咖啡之道的起点。
-        </p>
-        <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">
-          아카데미는 커피에 대한 열정이 전문성으로 바뀌는 곳입니다. 입문자부터 컴피티션을 꿈꾸는 바리스타까지, 여기서 커피의 깊이를 발견하세요.
-        </p>
+        <h2 class="section-title">Learn from<br><em>the best</em></h2>
+        <p class="section-body">Our academy is a place where passion for specialty coffee becomes mastery. Whether you're a curious beginner or an aspiring competition barista — this is where the journey deepens.</p>
+        <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">咖啡学院是热爱转化为专业的地方。无论你是初学者还是志在竞技的咖啡师，这里都是深耕咖啡之道的起点。</p>
+        <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:#8a8480;">아카데미는 커피에 대한 열정이 전문성으로 바뀌는 곳입니다. 입문자부터 컴피티션을 꿈꾸는 바리스타까지, 여기서 커피의 깊이를 발견하세요.</p>
         <div class="academy-credentials">
           <div class="academy-credential">
             <div class="academy-credential-icon">🏅</div>
@@ -1161,7 +1009,7 @@
               <strong>SCA Licensed Q Instructor</strong>
               Certified to train and certify Q Graders — one of the most advanced coffee credentials in the world, and rare in China.<br>
               <span style="font-size:0.75rem;">持牌 Q Instructor，具备培训并认证 Q Grader 的资质，此资质在中国极为稀缺。</span><br>
-              <span style="font-size:0.75rem;">공인 Q Instructor — Q Grader를 교육하고 인증할 수 있는 자격 보유. 중국에서 극히 드문 자격증입니다.</span>
+              <span style="font-size:0.75rem;">공인 Q Instructor — Q Grader 교육·인증 자격 보유. 중국에서 극히 드문 자격입니다.</span>
             </div>
           </div>
           <div class="academy-credential">
@@ -1170,53 +1018,29 @@
               <strong>中国咖啡联赛冲煮评审执裁</strong>
               Licensed competition judge for brewing events under the Chinese Coffee League (CCL).<br>
               <span style="font-size:0.75rem;">中国咖啡联赛冲煮赛项官方认证评审执裁。</span><br>
-              <span style="font-size:0.75rem;">중국커피리그(CCL) 브루잉 부문 공인 심판 자격 보유.</span>
+              <span style="font-size:0.75rem;">중국커피리그(CCL) 브루잉 부문 공인 심판.</span>
             </div>
           </div>
         </div>
         <div class="academy-heritage">
           <p>Rooted in the legacy of 露元咖啡培训学院 (First Drop Coffee Academy), with years of training experience and a deep connection to China's specialty coffee competition scene.</p>
-          <p style="margin-top:0.4rem;font-size:0.75rem;">传承自露元咖啡培训学院，深耕中国精品咖啡培训与竞技多年。 · 露元咖啡培训학원의 헤리티지를 이어받아, 중국 스페셜티 커피 씬과 깊이 연결되어 있습니다.</p>
+          <p style="margin-top:0.4rem;font-size:0.75rem;">传承自露元咖啡培训学院，深耕中国精品咖啡培训与竞技多年。 · 露元咖啡培训학원의 헤리티지를 이어받았습니다.</p>
         </div>
       </div>
       <div>
-        <p class="section-label" style="margin-bottom:1.25rem;">Courses offered · 课程设置 · 개설 코스</p>
+        <p class="section-label" style="margin-bottom:1.25rem;">Courses · 课程 · 코스</p>
         <div class="academy-courses">
-          <div class="academy-course">
-            <div class="academy-course-icon">☕</div>
-            <p class="academy-course-name">SCA Barista Skills</p>
-            <p class="academy-course-sub">Foundation to Professional<br>基础至专业级 · 기초~프로</p>
-          </div>
-          <div class="academy-course">
-            <div class="academy-course-icon">🌊</div>
-            <p class="academy-course-name">SCA Brewing</p>
-            <p class="academy-course-sub">Filter &amp; Pour Over Mastery<br>手冲萃取 · 브루잉 마스터리</p>
-          </div>
-          <div class="academy-course">
-            <div class="academy-course-icon">👁</div>
-            <p class="academy-course-name">SCA Sensory Skills</p>
-            <p class="academy-course-sub">Tasting &amp; Cupping<br>感官品鉴 · 센서리 스킬</p>
-          </div>
-          <div class="academy-course">
-            <div class="academy-course-icon">🔥</div>
-            <p class="academy-course-name">SCA Roasting</p>
-            <p class="academy-course-sub">Green to Cup<br>烘焙技艺 · 로스팅</p>
-          </div>
-          <div class="academy-course">
-            <div class="academy-course-icon">🌱</div>
-            <p class="academy-course-name">Q Grader Pathway</p>
-            <p class="academy-course-sub">CQI Certification Track<br>Q Grader 认证 · Q Grader 인증</p>
-          </div>
-          <div class="academy-course">
-            <div class="academy-course-icon">🎨</div>
-            <p class="academy-course-name">Latte Art</p>
-            <p class="academy-course-sub">From basics to competition<br>拉花技艺 · 라떼 아트</p>
-          </div>
+          <div class="academy-course"><div class="academy-course-icon">☕</div><p class="academy-course-name">SCA Barista Skills</p><p class="academy-course-sub">Foundation to Professional<br>基础至专业级 · 기초~프로</p></div>
+          <div class="academy-course"><div class="academy-course-icon">🌊</div><p class="academy-course-name">SCA Brewing</p><p class="academy-course-sub">Filter &amp; Pour Over<br>手冲萃取 · 브루잉</p></div>
+          <div class="academy-course"><div class="academy-course-icon">👁</div><p class="academy-course-name">SCA Sensory</p><p class="academy-course-sub">Tasting &amp; Cupping<br>感官品鉴 · 센서리</p></div>
+          <div class="academy-course"><div class="academy-course-icon">🔥</div><p class="academy-course-name">SCA Roasting</p><p class="academy-course-sub">Green to Cup<br>烘焙技艺 · 로스팅</p></div>
+          <div class="academy-course"><div class="academy-course-icon">🌱</div><p class="academy-course-name">Q Grader Pathway</p><p class="academy-course-sub">CQI Certification<br>Q Grader 认证 · Q Grader 인증</p></div>
+          <div class="academy-course"><div class="academy-course-icon">🎨</div><p class="academy-course-name">Latte Art</p><p class="academy-course-sub">Basics to competition<br>拉花技艺 · 라떼 아트</p></div>
         </div>
         <div style="margin-top:2rem;padding:1.5rem;background:var(--warm-dark);border-radius:2px;text-align:center;">
           <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Enquiries · 咨询 · 문의</p>
           <a href="https://m.dianping.com/shopinfo/H5Aysy2lOH38DcaR?msource=Appshare2021&utm_source=shop_share&shoptype=10&shopcategoryid=132&cityid=1&isoversea=0" target="_blank" style="color:var(--lyze-blue);text-decoration:none;font-size:0.9rem;">Find us on Dianping · 大众点评 ↗</a>
-          <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:0.5rem;">大众点评로 문의해 주세요</p>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:0.5rem;">大众点评으로 문의해 주세요</p>
         </div>
       </div>
     </div>
@@ -1231,7 +1055,7 @@
         We're tucked into a quiet street in Shanghai, behind our unmistakable turquoise facade. The bench outside is always free.
       </p>
       <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:rgba(255,255,255,0.35);">
-        我们坐落在上海的一条安静街道上，标志性的蓝绿色外墙一眼便能认出。门外的长椅随时欢迎您。
+        我们坐落在上海的一条安静街道上，标志性的蓝绿色外墙一眼便能认出。
       </p>
       <p class="section-body" style="margin-top:0.5rem;font-size:0.875rem;color:rgba(255,255,255,0.35);">
         상하이의 조용한 골목, 눈에 띄는 터콰이즈 파사드 뒤에 자리합니다. 문 앞 벤치는 언제나 열려 있어요.
@@ -1247,14 +1071,11 @@
         </div>
         <div class="visit-detail">
           <span class="visit-detail-label">Hours · 营业时间</span>
-          <span class="visit-detail-value">Every day · 10:00 – 17:00<br><span style="font-size:0.85rem;color:rgba(255,255,255,0.4);">每天开放 · 매일 운영</span></span>
+          <span class="visit-detail-value">Every day · 10:00 – 17:00<br><span style="font-size:0.85rem;color:rgba(255,255,255,0.4);">每天开放</span></span>
         </div>
         <div class="visit-detail">
           <span class="visit-detail-label">Academy · 学院 · 아카데미</span>
-          <span class="visit-detail-value">
-            Lyze Coffee Academy<br>
-            <span style="font-size:0.85rem;color:rgba(255,255,255,0.4);">Opening in approx. 2 months · 约两个月后开业 · 약 2개월 후 오픈</span>
-          </span>
+          <span class="visit-detail-value">Lyze Coffee Academy<br><span style="font-size:0.85rem;color:rgba(255,255,255,0.4);">Opening in approx. 2 months · 约两个月后开业 · 약 2개월 후 오픈</span></span>
         </div>
         <div class="visit-detail">
           <span class="visit-detail-label">Reviews · 点评</span>
@@ -1285,31 +1106,26 @@
   </footer>
 
   <script>
-    // Menu tabs
-    const tabs = document.querySelectorAll('.menu-tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-      });
-    });
-
-    // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
       document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
-
-    // Close mobile menu when a link is clicked
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    document.querySelectorAll('.mnl').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
+      });
+    });
+
+    const tabs = document.querySelectorAll('.menu-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
       });
     });
   </script>
