@@ -8,7 +8,19 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      overflow-x: hidden;
+      max-width: 100%;
+    }
       --lyze-blue: rgb(0, 191, 211);
       --lyze-blue-dark: rgb(0, 158, 175);
       --lyze-blue-light: rgb(224, 249, 252);
@@ -17,16 +29,6 @@
       --warm-mid: #5c5750;
       --cream: #f8f5f0;
       --brick: #b5603a;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--warm-dark);
-      overflow-x: hidden;
-      max-width: 100vw;
     }
 
     /* NAV */
@@ -43,7 +45,7 @@
       border-bottom: 1px solid rgba(41,191,212,0.15);
       transition: all 0.3s ease;
       box-sizing: border-box;
-      width: 100%;
+      max-width: 100vw;
     }
 
     .nav-logo {
