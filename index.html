@@ -90,11 +90,8 @@
       text-decoration: none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    .nav-links { display: none; }
+    .hamburger { display: flex !important; }
 
     .nav-links a {
       text-decoration: none;
@@ -112,6 +109,10 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .nav-right { gap: 0.75rem; }
+      .lang-btn { padding: 0.3rem 0.5rem; font-size: 0.7rem; }
     }
 
     /* HERO */
@@ -841,11 +842,19 @@
         document.body.classList.add('lang-cn');
         document.getElementById('btn-cn').classList.add('active');
         document.getElementById('btn-en').classList.remove('active');
+        if (document.getElementById('btn-cn-mobile')) {
+          document.getElementById('btn-cn-mobile').classList.add('active');
+          document.getElementById('btn-en-mobile').classList.remove('active');
+        }
         localStorage.setItem('lyzeLang', 'cn');
       } else {
         document.body.classList.remove('lang-cn');
         document.getElementById('btn-en').classList.add('active');
         document.getElementById('btn-cn').classList.remove('active');
+        if (document.getElementById('btn-en-mobile')) {
+          document.getElementById('btn-en-mobile').classList.add('active');
+          document.getElementById('btn-cn-mobile').classList.remove('active');
+        }
         localStorage.setItem('lyzeLang', 'en');
       }
     }
