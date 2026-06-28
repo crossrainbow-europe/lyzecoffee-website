@@ -321,13 +321,16 @@
       .about-images { min-height: 350px; }
       .about-content { padding: 3rem 2rem; }
       .menu { padding: 4rem 2rem; }
-      .menu-grid { grid-template-columns: 1fr; }
-      .drinks { padding: 4rem 2rem; }
-      .drinks-grid { grid-template-columns: 1fr 1fr; }
+      .menu-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .menu-tabs { flex-wrap: wrap; gap: 0.5rem; width: 100%; }
+      .menu-tab { flex: 1; min-width: 80px; text-align: center; }
+      .menu-grid { grid-template-columns: 1fr 1fr !important; }
       .interior { grid-template-columns: 1fr 1fr; height: auto; }
       .interior-img.tall { grid-row: auto; }
-      .bakery { padding: 4rem 2rem; }
-      .bakery-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .visit { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+      .intro-strip { padding: 1rem 2rem; gap: 2rem; overflow-x: auto; }
+    }
       .visit { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
       .intro-strip { padding: 1rem 2rem; gap: 2rem; overflow-x: auto; }
