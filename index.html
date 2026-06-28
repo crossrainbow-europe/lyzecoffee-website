@@ -510,12 +510,12 @@
         <h2 class="section-title"><span class="en">Our menu</span><span class="cn">菜单</span></h2>
       </div>
       <div class="menu-tabs">
-        <button class="menu-tab active"><span class="en">Coffee</span><span class="cn">咖啡</span></button>
-        <button class="menu-tab"><span class="en">Non-coffee</span><span class="cn">非咖啡</span></button>
-        <button class="menu-tab"><span class="en">Pastries</span><span class="cn">糕点</span></button>
+        <button class="menu-tab active" onclick="switchTab('coffee')"><span class="en">Coffee</span><span class="cn">咖啡</span></button>
+        <button class="menu-tab" id="tab-noncoffee" onclick="switchTab('noncoffee')"><span class="en">Non-coffee</span><span class="cn">非咖啡</span></button>
+        <button class="menu-tab" onclick="switchTab('pastries')"><span class="en">Pastries</span><span class="cn">糕点</span></button>
       </div>
     </div>
-    <div class="menu-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div id="panel-coffee" class="menu-grid" style="grid-template-columns:repeat(4,1fr);">
       <div class="menu-item">
         <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
           <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/seasonal.jpg" alt="Seasonal Special" style="width:100%;height:100%;object-fit:cover;display:block;" />
@@ -587,6 +587,64 @@
         <h3 class="menu-item-name"><span class="en">Affogato</span><span class="cn">阿芙加朵</span></h3>
         <p class="menu-item-desc en">Espresso shot over vanilla ice cream</p>
         <p class="menu-item-desc cn">浓缩淋上香草冰淇淋</p>
+      </div>
+    </div>
+
+    <div id="panel-noncoffee" class="menu-grid" style="grid-template-columns:repeat(4,1fr);display:none;">
+      <div class="menu-item">
+        <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
+          <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/hotchocolate.jpg" alt="Hot Chocolate" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <p class="menu-item-number">01</p>
+        <h3 class="menu-item-name"><span class="en">Hot Chocolate</span><span class="cn">热可可</span></h3>
+        <p class="menu-item-desc en">Rich, velvety hot chocolate — warming and indulgent</p>
+        <p class="menu-item-desc cn">浓郁顺滑热可可，温暖治愈</p>
+      </div>
+      <div class="menu-item">
+        <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.15);font-size:1rem;">coming soon</p>
+        </div>
+        <p class="menu-item-number">02</p>
+        <h3 class="menu-item-name"><span class="en">Rooibos Latte</span><span class="cn">路易波士茶拿铁</span></h3>
+        <p class="menu-item-desc en">South African rooibos with steamed milk</p>
+        <p class="menu-item-desc cn">南非路易波士茶配蒸奶</p>
+      </div>
+      <div class="menu-item">
+        <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
+          <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/supergrain.jpg" alt="Super Grain Latte" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <p class="menu-item-number">03</p>
+        <h3 class="menu-item-name"><span class="en">Super Grain Latte</span><span class="cn">醇香麦谷拿铁</span></h3>
+        <p class="menu-item-desc en">Wholesome grain latte, nutty and smooth</p>
+        <p class="menu-item-desc cn">醇香谷物拿铁，坚果风味顺滑</p>
+      </div>
+      <div class="menu-item">
+        <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
+          <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/berrysoda.jpg" alt="Berry Berry Soda" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <p class="menu-item-number">04</p>
+        <h3 class="menu-item-name"><span class="en">Berry Berry Soda</span><span class="cn">莓莓气泡水</span></h3>
+        <p class="menu-item-desc en">Sparkling berry soda — bright, fruity, refreshing</p>
+        <p class="menu-item-desc cn">莓果气泡水，清爽怡人</p>
+      </div>
+    </div>
+
+    <div id="panel-pastries" class="menu-grid" style="grid-template-columns:repeat(4,1fr);display:none;">
+      <div class="menu-item">
+        <p class="menu-item-number">01</p>
+        <h3 class="menu-item-name"><span class="en">Pecan Macadamia Cookie</span><span class="cn">山核桃夏威夷果曲奇</span></h3>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">02</p>
+        <h3 class="menu-item-name"><span class="en">Red Velvet Cookie</span><span class="cn">红丝绒曲奇</span></h3>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">03</p>
+        <h3 class="menu-item-name"><span class="en">Dark Chocolate Cookie</span><span class="cn">黑巧克力曲奇</span></h3>
+      </div>
+      <div class="menu-item">
+        <p class="menu-item-number">04</p>
+        <h3 class="menu-item-name"><span class="en">Butter Scone</span><span class="cn">原味黄油司康</span></h3>
       </div>
     </div>
   </section>
@@ -843,13 +901,12 @@
     });
 
     // Menu tabs
-    const tabs = document.querySelectorAll('.menu-tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-      });
-    });
+    function switchTab(tab) {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('[id^="panel-"]').forEach(p => p.style.display = 'none');
+      document.getElementById('panel-' + tab).style.display = 'grid';
+      event.target.closest('.menu-tab').classList.add('active');
+    }
   </script>
 
 </body>
