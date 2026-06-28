@@ -91,7 +91,6 @@
     }
 
     .nav-links { display: none; }
-    .hamburger { display: flex !important; }
 
     .nav-links a {
       text-decoration: none;
@@ -338,8 +337,8 @@
     }
 
     /* HAMBURGER */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; flex-shrink: 0; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-dark); border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger { display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 4px 8px; background: none; border: none; flex-shrink: 0; font-size: 1.5rem; color: var(--warm-dark); line-height: 1; }
+    .hamburger span { display: none; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -388,7 +387,7 @@
         <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
         <button class="lang-btn" id="btn-cn" onclick="setLang('cn')">中文</button>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
     </div>
   </nav>
 
@@ -871,12 +870,14 @@
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open');
+      hamburger.textContent = mobileMenu.classList.contains('open') ? '✕' : '☰';
       document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
     document.querySelectorAll('.mnl').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
+        hamburger.textContent = '☰';
         document.body.style.overflow = '';
       });
     });
