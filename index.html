@@ -266,12 +266,14 @@
     .drink-note { font-size: 0.8rem; color: var(--warm-mid); letter-spacing: 0.05em; }
 
     /* INTERIOR */
-    .interior { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 600px; background: var(--warm-dark); }
-    .interior-img { overflow: hidden; }
-    .interior-img.tall { grid-row: 1 / 3; }
-    .interior-text { grid-column: 2 / 6; background: var(--lyze-blue); display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem; }
-    .interior-text p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: #fff; line-height: 1.4; }
-    .interior-text small { display: block; margin-top: 0.75rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .interior-hero { position: relative; height: 560px; overflow: hidden; background: var(--warm-dark); }
+    .interior-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .interior-hero-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem; background: linear-gradient(to top, rgba(0,0,0,0.65), transparent); }
+    .interior-hero-caption p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: #fff; line-height: 1.4; }
+    .interior-hero-caption small { display: block; margin-top: 0.75rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
+    .interior-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--warm-dark); }
+    .interior-panel { aspect-ratio: 1 / 1; overflow: hidden; }
+    .interior-panel img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* BAKERY */
     .bakery { padding: 7rem 5rem; background: #f0ece6; }
@@ -325,13 +327,9 @@
       .menu-tabs { flex-wrap: wrap; gap: 0.5rem; width: 100%; }
       .menu-tab { flex: 1; min-width: 80px; text-align: center; }
       .menu-grid { grid-template-columns: 1fr 1fr !important; }
-      .interior { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 220px; height: auto; }
-      .interior-text { grid-column: 1 / 3 !important; grid-row: 1 !important; }
-      .interior > div:nth-child(1) { grid-column: 1 / 2 !important; grid-row: 2 !important; height: 220px !important; }
-      .interior > div:nth-child(3) { grid-column: 2 / 3 !important; grid-row: 2 !important; }
-      .interior > div:nth-child(4) { grid-column: 1 / 2 !important; grid-row: 3 !important; }
-      .interior > div:nth-child(5) { grid-column: 2 / 3 !important; grid-row: 3 !important; }
-      .interior > div:nth-child(6) { grid-column: 1 / 3 !important; grid-row: 4 !important; height: 220px !important; }
+      .interior-hero { height: 320px; }
+      .interior-hero-caption { padding: 1.5rem; }
+      .interior-hero-caption p { font-size: 1.1rem; }
       .visit { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
       .intro-strip { padding: 1rem 2rem; gap: 2rem; overflow-x: auto; }
@@ -692,24 +690,24 @@
   </section>
 
   <!-- INTERIOR -->
-  <div class="interior">
-    <div class="interior-img tall">
-      <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/interior-wide.jpg" alt="Lyze Coffee interior" style="width:100%;height:100%;object-fit:cover;display:block;" />
-    </div>
-    <div class="interior-text">
+  <div class="interior-hero">
+    <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/interior-order.jpg" alt="Lyze Coffee order counter" />
+    <div class="interior-hero-caption">
       <p><span class="en">"Industrial soul, blue heart"</span><span class="cn">"工业灵魂，蓝色之心"</span></p>
       <small><span class="en">The lyze space · Shanghai</span><span class="cn">Lyze 空间 · 上海</span></small>
     </div>
-    <div class="interior-img">
+  </div>
+  <div class="interior-grid">
+    <div class="interior-panel">
+      <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/interior-wide.jpg" alt="Lyze Coffee interior" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+    <div class="interior-panel">
       <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/interior-bar.jpg" alt="Lyze Coffee espresso bar" style="width:100%;height:100%;object-fit:cover;display:block;" />
     </div>
-    <div class="interior-img">
+    <div class="interior-panel">
       <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/interior-counter.jpg" alt="Lyze Coffee pastry counter" style="width:100%;height:100%;object-fit:cover;display:block;" />
     </div>
-    <div class="interior-img">
-      <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/interior-order.jpg" alt="Lyze Coffee order menu" style="width:100%;height:100%;object-fit:cover;display:block;" />
-    </div>
-    <div class="interior-img">
+    <div class="interior-panel">
       <img src="https://raw.githubusercontent.com/crossrainbow-europe/lyzecoffee-website/main/interior-wall.jpg" alt="Lyze Coffee brand wall" style="width:100%;height:100%;object-fit:cover;display:block;" />
     </div>
   </div>
