@@ -361,7 +361,9 @@
       .menu-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
       .menu-tabs { flex-wrap: wrap; gap: 0.5rem; width: 100%; }
       .menu-tab { flex: 1; min-width: 80px; text-align: center; }
-      .menu-grid { grid-template-columns: 1fr 1fr !important; }
+      .menu-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important; }
+      .menu-item { min-width: 0; }
+      .menu-item-desc { overflow-wrap: break-word; word-break: break-word; }
       .interior-hero { height: 320px; }
       .interior-hero-caption { padding: 1.5rem; }
       .interior-hero-caption p { font-size: 1.1rem; }
@@ -443,7 +445,7 @@
       </h1>
       <p class="hero-desc">
         <span class="en">A destination for those who love specialty coffee. World-class beans, brewed with precision — and a place to learn the craft from those who live it.</span>
-        <span class="cn">为每一位热爱精品咖啡的人而生。世界顶级豆源，精准萃取，亦是学习咖啡之道的圣地。</span>
+        <span class="cn">为每一份对精品咖啡的执着而生。我们寻遍世界各大产区的咖啡豆，以精准萃取呈现风土本味。不止于品鉴，这里更是咖啡学问的归处。</span>
       </p>
       <a href="#menu" class="hero-cta">
         <span class="en">Explore our menu</span>
@@ -533,7 +535,7 @@
       <p class="section-body en" style="margin-top:1rem;">We also believe coffee doesn't have to stand alone. By pairing it with carefully chosen ingredients — fruits, spices, botanicals — we explore new flavor harmonies that surprise and delight.</p>
       <p class="section-body cn" style="margin-top:1rem;">我们将咖啡与各种食材相结合，探索出令人惊喜的全新风味组合。</p>
       <p class="section-body en" style="margin-top:1rem;">Our academy — rooted in the heritage of First Drop Coffee Academy — brings the same commitment to education, led by a licensed Q Instructor and Chinese Coffee League brewing judge.</p>
-      <p class="section-body cn" style="margin-top:1rem;">我们的咖啡学院传承自露元咖啡培训学院，由持牌 Q Instructor 及中国咖啡联赛冲煮评审执裁主理。即将开业。</p>
+      <p class="section-body cn" style="margin-top:1rem;">我们的咖啡学院传承自露元咖啡培训学院，由持牌 Q Instructor 及中国咖啡联赛冲煮评审执裁主理。</p>
     </div>
   </section>
 
@@ -567,7 +569,7 @@
         <p class="menu-item-number">02</p>
         <h3 class="menu-item-name"><span class="en">Cold Brew</span><span class="cn">冷萃咖啡</span></h3>
         <p class="menu-item-desc en">Slow-steeped cold brew, clean and deep</p>
-        <p class="menu-item-desc cn">慢萃冷brew，干净醇厚</p>
+        <p class="menu-item-desc cn">低温长时间萃取，提升干净清晰的风味</p>
       </div>
       <div class="menu-item">
         <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
@@ -576,7 +578,7 @@
         <p class="menu-item-number">03</p>
         <h3 class="menu-item-name"><span class="en">Pour Over</span><span class="cn">手冲咖啡</span></h3>
         <p class="menu-item-desc en">Single origin, hand-poured — bright, floral, complex</p>
-        <p class="menu-item-desc cn">单一产地，手冲萃取，明亮花香</p>
+        <p class="menu-item-desc cn">用手冲的方式展现每一支咖啡豆的独特风味</p>
       </div>
       <div class="menu-item">
         <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
@@ -585,7 +587,7 @@
         <p class="menu-item-number">04</p>
         <h3 class="menu-item-name"><span class="en">Americano</span><span class="cn">美式咖啡</span></h3>
         <p class="menu-item-desc en">Espresso and hot water, bold and clean</p>
-        <p class="menu-item-desc cn">浓缩加水，醇厚干净</p>
+        <p class="menu-item-desc cn">加水稀释浓缩咖啡，更加适口且醇厚干净</p>
       </div>
       <div class="menu-item">
         <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
@@ -620,8 +622,8 @@
         </div>
         <p class="menu-item-number">08</p>
         <h3 class="menu-item-name"><span class="en">Affogato</span><span class="cn">阿芙加朵</span></h3>
-        <p class="menu-item-desc en">Espresso shot over vanilla ice cream</p>
-        <p class="menu-item-desc cn">浓缩淋上香草冰淇淋</p>
+        <p class="menu-item-desc en">Espresso shot over salted caramel gelato</p>
+        <p class="menu-item-desc cn">海盐焦糖Gelato浇浓缩咖啡</p>
       </div>
     </div>
 
@@ -641,8 +643,8 @@
         </div>
         <p class="menu-item-number">02</p>
         <h3 class="menu-item-name"><span class="en">Rooibos Latte</span><span class="cn">路易波士茶拿铁</span></h3>
-        <p class="menu-item-desc en">South African rooibos with steamed milk</p>
-        <p class="menu-item-desc cn">南非路易波士茶配蒸奶</p>
+        <p class="menu-item-desc en">South African rooibos with silky steamed milk foam</p>
+        <p class="menu-item-desc cn">南非路易波士茶搭配绵密奶泡</p>
       </div>
       <div class="menu-item">
         <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
@@ -650,8 +652,8 @@
         </div>
         <p class="menu-item-number">03</p>
         <h3 class="menu-item-name"><span class="en">Super Grain Latte</span><span class="cn">醇香麦谷拿铁</span></h3>
-        <p class="menu-item-desc en">Wholesome grain latte, nutty and smooth</p>
-        <p class="menu-item-desc cn">醇香谷物拿铁，坚果风味顺滑</p>
+        <p class="menu-item-desc en">A blend of multigrain and milk, rich and velvety with a lingering grainy finish</p>
+        <p class="menu-item-desc cn">复合麦谷与牛奶的结合，浓醇顺滑的口感和唇齿留香的谷物尾韵</p>
       </div>
       <div class="menu-item">
         <div style="width:100%;aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem;border-radius:2px;">
